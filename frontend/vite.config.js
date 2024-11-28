@@ -2,12 +2,16 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  root: './', // Asegura que use la raíz del proyecto
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@': '/src', // Asegura que las rutas relativas se resuelvan correctamente
+    },
+  },
   build: {
-    outDir: 'dist', // Directorio de salida
+    outDir: 'dist', // Directorio donde se generará la aplicación
     rollupOptions: {
-      input: './index.html', // Archivo de entrada
+      input: './index.html', // Asegura que el archivo de entrada sea index.html
     },
   },
 });
